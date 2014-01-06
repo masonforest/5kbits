@@ -1,0 +1,1 @@
+$bitcoin_client = Bitcoin(ENV['BITCOIN_CLIENT_USERNAME'], ENV['BITCOIN_CLIENT_PASSWORD'])

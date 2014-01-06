@@ -1,0 +1,8 @@
+= simple_form_for @transaction_form, url: transactions_path do |f|
+ = f.input :btc
+ = f.input :bitcoin_address
+ = f.input :message
+ = f.input :credit_card_number, input_html: { value: '4242 4242 4242 4242', name: nil }
+ = f.input :expiration_date, input_html: { name: nil }
+ = f.input :cvc, input_html: { name: nil }
+ = f.submit
