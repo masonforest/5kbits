@@ -37,7 +37,7 @@ gem 'dotenv-rails'
 gem 'rails_12factor'
 gem 'pg'
 gem 'high_voltage'
-gem 'money-rails', path: '../money-rails'
+gem 'money-rails', github: 'masonforest/money-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

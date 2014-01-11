@@ -1,5 +1,6 @@
-PATH
-  remote: ../money-rails
+GIT
+  remote: git://github.com/masonforest/money-rails.git
+  revision: 5e2ff0d7994bf4ab7827ba92f19ea5f702b6da13
   specs:
     money-rails (0.9.0)
       activesupport (>= 3.0)
