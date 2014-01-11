@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <tr>
+      <th>USD (at the time of the transaction)</th>
+      <th>BTC</th>
+      <th>Bitcoin Address</th>
+    </tr>
+  </thead>
+<% @transactions.each do |transaction| %>
+  <tr>
+    <td><%= number_to_currency(transaction.usd) %></td>
+    <td><%= transaction.btc %></td>
+    <td><%= transaction.bitcoin_address %></td>
+  </tr>
+<% end %>
+</table>

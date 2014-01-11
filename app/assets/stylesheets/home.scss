@@ -1,0 +1,60 @@
+.logo {
+  width: 200px;
+  float: left;
+  margin-top: 30px;
+}
+
+header {
+  overflow: auto;
+
+  h1{
+    font-size: 100px;
+    font-weight: 900;
+    margin: 28px 0;
+  }
+
+  a, a:hover{
+    color: #333;
+    text-decoration: none;
+  }
+}
+
+input[type=submit] {
+  font-size: 40px;
+  font-weight: 900;
+  padding: 0 67px;
+}
+
+.input-group.btc{
+  margin-top: 25px;
+}
+.glyphicon-arrow-right {
+font-size: 40px;
+margin-top: 20px;
+}
+
+
+.input-group {
+
+  .glyphicon {
+    display: block;
+  }
+
+  &.active .glyphicon {
+    display: none;
+  }
+}
+
+.input-group-addon {
+  width: 50%;
+
+  &:first-child {
+    width: 25px;
+  }
+
+  .glyphicon-pencil {
+    float: right;
+    position: relative;
+    top: -1px;
+  }
+}

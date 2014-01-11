@@ -31,10 +31,13 @@ gem 'jbuilder', '~> 1.2'
 gem 'haml'
 gem 'simple_form'
 gem 'stripe'
+gem 'stripe-rails'
 gem 'pry'
 gem 'dotenv-rails'
 gem 'rails_12factor'
 gem 'pg'
+gem 'high_voltage'
+gem 'money-rails', path: '../money-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

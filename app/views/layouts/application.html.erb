@@ -4,11 +4,52 @@
   <title>BitcoinExchange</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= stripe_javascript_tag %>
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500italic,700italic' rel='stylesheet' type='text/css'>
+  <%= tag :meta, name: :btc_to_usd_cents_exchange_rate, value: ENV['BTC_TO_USD_CENTS_EXCHANGE_RATE'] %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div>
+    <header class=container>
+    <div class=row>
+      <div class="col-xs-12">
+        <%= link_to root_path do %>
+          <%= image_tag 'logo.png', class: 'logo' %>
+          <h1>BitcoinExchange.io</h1>
+        <% end %>
+        <nav>
+      </div>
+    </div>
+    <div class=row>
+      <div class="col-xs-12">
+        <nav class="navbar navbar-default" role="navigation">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
 
-<%= yield %>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><%= link_to 'Purchase bitcoins', root_path %></li>
+              <li><%= link_to 'List Transactions', transactions_path %></li>
+              <li><%= link_to 'About', page_path(:about) %></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <div class=container>
+      <%= yield %>
+    </div>
+    <footer class=container>
+      Built by <%= link_to 'masonforest', 'https://www.twitter.com/masonforest' %>
+    </footer>
+  </div>
 
 </body>
 </html>

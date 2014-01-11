@@ -2,19 +2,20 @@ en:
   helpers:
     submit:
       transaction_form:
-        create: Purchase Bitcoin
+        create: Purchase bitcoin
   simple_form:
     labels:
       transaction_form:
         bitcoin_address: Bitcoin Address
-        btc: BTC
+        usd: Amount
+        message: Message (optional)
         credit_card_number: Credit Card Number
         expiration_date: Expiration Date
         cvc: CVC
     placeholders:
       transaction_form:
-        bitcoin_address: Bitcoin Address
-        btc: BTC
+        bitcoin_address: 14FwstpBq84kRSJk6wuCZVNhtsC4B4wYGy
+        btc: .01
         credit_card_number: Credit Card Number
         expiration_date: MM / YY
         cvc: CVC

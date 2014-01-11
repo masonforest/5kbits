@@ -13,10 +13,14 @@
 
 ActiveRecord::Schema.define(version: 20140106025049) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "transactions", force: true do |t|
     t.string   "bitcoin_address"
+    t.string   "bitcoin_transaction_id"
     t.decimal  "btc"
-    t.integer  "amount_in_cents"
+    t.integer  "usd_cents",              default: 0, null: false
     t.string   "message"
     t.datetime "created_at"
     t.datetime "updated_at"
