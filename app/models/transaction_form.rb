@@ -30,8 +30,8 @@ class TransactionForm
   def submit
     if valid?
       ActiveRecord::Base.transaction do
-        charge_card
         transfer_bitcoins
+        charge_card
         create_transaction
       end
     else
