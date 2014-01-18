@@ -1,6 +1,7 @@
 class TransactionForm
   include ActiveModel::Model
   include MoneyRails::ActiveRecord::Monetizable
+  include ActionView::Helpers::NumberHelper
 
   attr_reader(
     :usd,
@@ -40,9 +41,10 @@ class TransactionForm
   end
 
   def transfer_bitcoins
-    if Rails.env.production?
+    #if Rails.env.production?
       @bitcoin_transaction_id = $bitcoin_client.sendtoaddress(bitcoin_address, btc.to_f.round(8), message)
-    end
+      Rails.cache.delete(:balance)
+    #end
   end
 
   def charge_card
@@ -71,11 +73,15 @@ class TransactionForm
   private
 
   def amount_is_valid
-    if usd_cents == 0
-      errors.add(:usd, 'amount is invalid')
-    elsif usd_cents > ENV['MAXIUM_AMOUNT_IN_CENTS'].to_i
-      errors.add(:usd, "amount must be less than $#{(ENV['MAXIUM_AMOUNT_IN_CENTS']/100.0).round2}")
+    if usd_cents < 100
+      errors.add(:usd, "amount must be grater than #{number_to_currency(1.0)}")
+    elsif usd_cents > max_cents
+      errors.add(:usd, "amount must be less than #{number_to_currency(max_cents / 100.0)}")
     end
+  end
+
+  def max_cents
+    [ENV['MAXIUM_AMOUNT_IN_CENTS'].to_i, Account.balance_in_cents].min
   end
 
   def btc

@@ -1,35 +1,40 @@
-= simple_form_for @transaction_form, url: transactions_path do |f|
-  = f.input :stripe_token, as: :hidden
-  .row
-    .col-xs-7
-      .row.amount
-        .col-xs-5
-          = f.input :usd do
-            .input-group.usd.active
-              %span.input-group-addon $
-              = f.input_field :usd, placeholder: sprintf('%.2f',ENV['BTC_TO_USD_CENTS_EXCHANGE_RATE'].to_i / 100.00/ 100.0)
+- if btc_remaining.zero?
+  %h1 Sorry, there are no bitcoins left to sell at this exchange.
+  %h1 Please check back soon.
+- else
+  %p Amount left to be distrubuted at this exchange: #{btc_remaining} BTC, #{usd_remaining}
+  = simple_form_for @transaction_form, url: transactions_path do |f|
+    = f.input :stripe_token, as: :hidden
+    .row
+      .col-xs-7
+        .row.amount
+          .col-xs-5
+            = f.input :usd do
+              .input-group.usd.active
+                %span.input-group-addon $
+                = f.input_field :usd, placeholder: sprintf('%.2f',ENV['BTC_TO_USD_CENTS_EXCHANGE_RATE'].to_i / 100.00/ 100.0)
+                %span.input-group-addon
+                  %span.glyphicon.glyphicon-pencil
+                  USD
+          .col-xs-1
+            .glyphicon.glyphicon-arrow-right
+          .col-xs-6
+            .input-group.btc
+              = f.input_field :btc,  value: (".001" if Rails.env.development?), disabled: true , name: nil
               %span.input-group-addon
                 %span.glyphicon.glyphicon-pencil
-                USD
-        .col-xs-1
-          .glyphicon.glyphicon-arrow-right
-        .col-xs-6
-          .input-group.btc
-            = f.input_field :btc,  value: (".001" if Rails.env.development?), disabled: true , name: nil
-            %span.input-group-addon
-              %span.glyphicon.glyphicon-pencil
-              BTC
-      .row
-        .col-xs-12
-          = f.input :bitcoin_address, input_html: { value: ("1LoBLNKPEdy4GwYWdaDLaTRbB7BBC9dZP3" if Rails.env.development?) }
-        .col-xs-12
-          = f.input :message
-    .col-xs-5
-      = f.input :credit_card_number, input_html: { value: ('4242 4242 4242 4242' if Rails.env.development?), name: nil }
-      .row
-        .col-xs-6
-          = f.input :expiration_date, input_html: { value: ('01 / 20' if Rails.env.development?) ,name: nil }
-        .col-xs-6
-          = f.input :cvc, input_html: { value: ('123' if Rails.env.development?), name: nil }
-      = f.submit class: 'btn btn-primary pull-right'
+                BTC
+        .row
+          .col-xs-12
+            = f.input :bitcoin_address, input_html: { value: ("1LoBLNKPEdy4GwYWdaDLaTRbB7BBC9dZP3" if Rails.env.development?) }
+          .col-xs-12
+            = f.input :message
+      .col-xs-5
+        = f.input :credit_card_number, input_html: { value: ('4242 4242 4242 4242' if Rails.env.development?), name: nil }
+        .row
+          .col-xs-6
+            = f.input :expiration_date, input_html: { value: ('01 / 20' if Rails.env.development?) ,name: nil }
+          .col-xs-6
+            = f.input :cvc, input_html: { value: ('123' if Rails.env.development?), name: nil }
+        = f.submit class: 'btn btn-primary pull-right'
 
