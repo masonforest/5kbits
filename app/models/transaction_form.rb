@@ -41,10 +41,10 @@ class TransactionForm
   end
 
   def transfer_bitcoins
-    #if Rails.env.production?
+    if Rails.env.production?
       @bitcoin_transaction_id = $bitcoin_client.sendtoaddress(bitcoin_address, btc.to_f.round(8), message)
       Rails.cache.delete(:balance)
-    #end
+    end
   end
 
   def charge_card
