@@ -5,7 +5,6 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= stripe_javascript_tag %>
-  <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500italic,700italic' rel='stylesheet' type='text/css'>
   <%= tag :meta, name: :btc_to_usd_cents_exchange_rate, value: ENV['BTC_TO_USD_CENTS_EXCHANGE_RATE'] %>
   <%= csrf_meta_tags %>
 </head>
