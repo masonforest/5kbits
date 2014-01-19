@@ -3,7 +3,7 @@ class CreateTransactions < ActiveRecord::Migration
     create_table :transactions do |t|
       t.string :bitcoin_address
       t.string :bitcoin_transaction_id
-      t.decimal :btc
+      t.integer :satoshis
       t.money :usd, currency: { present: false }
       t.string :message
 

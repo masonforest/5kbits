@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20140106025049) do
   create_table "transactions", force: true do |t|
     t.string   "bitcoin_address"
     t.string   "bitcoin_transaction_id"
-    t.decimal  "btc"
+    t.integer  "satoshis"
     t.integer  "usd_cents",              default: 0, null: false
     t.string   "message"
     t.datetime "created_at"
