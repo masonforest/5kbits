@@ -37,6 +37,7 @@ gem 'dotenv-rails'
 gem 'rails_12factor'
 gem 'pg'
 gem 'high_voltage'
+gem 'memcachier'
 gem 'money-rails', github: 'masonforest/money-rails'
 
 group :doc do
