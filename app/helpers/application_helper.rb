@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def usd_remaining
-    number_to_currency(Account.balance_in_cents / 100.0)
+    number_to_currency(Account.balance_in_usd_cents / 100.0)
   end
 
   def exchange_rate
