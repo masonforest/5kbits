@@ -1,4 +1,4 @@
-- if btc_remaining.zero?
+- if Account.balance_in_usd_cents <= 100
   %h1 Sorry, there are no bitcoins left to sell at this exchange.
   %h1 Please check back soon.
 - else
