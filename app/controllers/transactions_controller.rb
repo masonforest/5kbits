@@ -6,7 +6,6 @@ class TransactionsController < ApplicationController
   def create
     @transaction_form = TransactionForm.new(params[:transaction_form])
 
-
     if @transaction_form.submit
       redirect_to @transaction_form.transaction
     else

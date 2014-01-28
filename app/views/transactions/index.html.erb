@@ -10,7 +10,7 @@
   <tr>
     <td><%= number_to_currency(transaction.usd) %></td>
     <td><%= transaction.btc %></td>
-    <td><%= transaction.bitcoin_address %></td>
+    <td><%= link_to transaction.bitcoin_address, "http://blockexplorer.com/address/#{transaction.bitcoin_address}", target: '_blank' %></td>
   </tr>
 <% end %>
 </table>

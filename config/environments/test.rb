@@ -33,4 +33,5 @@ BitcoinExchange::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+  config.stripe.publishable_key= ENV['STRIPE_PUBLISHABLE_KEY']
 end

@@ -1,1 +1,10 @@
-%h1 Congratulations! You traded #{number_to_currency(@transaction.usd)} for #{@transaction.btc} bitcoins. The bitcoins have been transferred to #{@transaction.bitcoin_address}.
+%h1 Congratulations!
+
+%p
+  You traded
+  = content_tag(:span, number_to_currency(@transaction.usd), class: 'label label-success')
+  for
+  = content_tag(:span, @transaction.btc, class: 'label label-success')
+  bitcoins.
+  The bitcoins have been transferred to
+  = content_tag(:span, @transaction.bitcoin_address, class: 'label label-primary')

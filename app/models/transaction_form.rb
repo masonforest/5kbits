@@ -58,7 +58,7 @@ class TransactionForm
   end
 
   def transfer_bitcoins
-    if Rails.env.production?
+    unless Rails.env.development?
       @bitcoin_transaction_id = $bitcoin_client.sendtoaddress(bitcoin_address, btc.to_f.round(8), message)
       Rails.cache.delete(:balance)
     end
