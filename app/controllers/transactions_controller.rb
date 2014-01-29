@@ -18,6 +18,6 @@ class TransactionsController < ApplicationController
   end
 
   def index
-    @transactions = Transaction.all
+    @transactions = Transaction.order('created_at DESC').all
   end
 end
