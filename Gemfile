@@ -31,8 +31,6 @@ gem 'jbuilder', '~> 1.2'
 gem 'dalli'
 gem 'haml'
 gem 'simple_form'
-gem 'stripe'
-gem 'stripe-rails'
 gem 'pry'
 gem 'dotenv-rails'
 gem 'rails_12factor'
@@ -51,7 +49,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'fake_stripe', path: 'vendor/gems/fake_stripe'
   gem 'capybara'
 end
 

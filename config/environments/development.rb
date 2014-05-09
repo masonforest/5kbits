@@ -26,6 +26,4 @@ OverpricedBitcoin::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
-  config.stripe.publishable_key= ENV['STRIPE_PUBLISHABLE_KEY']
-  config.stripe.api_key= ENV['STRIPE_API_KEY']
 end
