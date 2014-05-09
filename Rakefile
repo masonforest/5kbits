@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-BitcoinExchange::Application.load_tasks
+OverpricedBitcoin::Application.load_tasks

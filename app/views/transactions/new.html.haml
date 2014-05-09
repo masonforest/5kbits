@@ -3,11 +3,11 @@
   %h1 Please check back soon.
 - else
   .panel.panel-danger
-    .panel-heading BitcoinExchange does not condone illegal activities.
+    .panel-heading OverpricedBitcoin does not condone illegal activities.
     .panel-body
       Transactions are limited to $20 per credit card to
       prevent fraud and other illegal activities.
-      BitcoinExchange will abide by all Federal and State laws as they are created.
+      OverpricedBitcoin will abide by all Federal and State laws as they are created.
   %p Exchange rate at this exchange: 1 BTC = #{exchange_rate}
   %p Amount left to be distrubuted at this exchange: #{btc_remaining} BTC = #{usd_remaining}
   = simple_form_for @transaction_form, url: transactions_path do |f|
