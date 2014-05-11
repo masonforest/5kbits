@@ -22,8 +22,6 @@ class TransactionForm
   validates :bitcoin_address, format: { with: /\A(1|3)[a-zA-Z1-9]{26,33}\z/,
     message: 'invalid bitcoin address' }
 
-  monetize :usd_cents
-
   def submit
     if valid?
       ActiveRecord::Base.transaction do
@@ -51,7 +49,6 @@ class TransactionForm
       description: '5000 bits'
     )
 
-    binding.pry
   end
 
   def create_transaction
