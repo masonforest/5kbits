@@ -2,9 +2,9 @@
 
 %p
   You traded
-  = content_tag(:span, number_to_currency(@transaction.usd), class: 'label label-success')
+  = content_tag(:span, number_to_currency(5), class: 'label label-success')
   for
-  = content_tag(:span, @transaction.btc, class: 'label label-success')
-  bitcoins.
-  The bitcoins have been transferred to
+  = content_tag(:span, 5000, class: 'label label-success')
+  bits.
+  The bits have been transferred to
   = content_tag(:span, @transaction.bitcoin_address, class: 'label label-primary')

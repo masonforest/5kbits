@@ -1,4 +1,4 @@
-class StripeForm
+class BalancedForm
   STRIPE_ERROR_MAP:
     "number": "#transaction_form_credit_card_number"
     "exp_month": "#transaction_form_expiration_date"
@@ -14,8 +14,8 @@ class StripeForm
   bind: ->
     @$form.submit(@onSubmit)
 
-  stripeToken: ->
-    $('#transaction_form_stripe_token')
+  cardURI: ->
+    $('#transaction_form_card_uri')
 
   creditCardNumber: ->
     $('#transaction_form_credit_card_number')
@@ -35,25 +35,21 @@ class StripeForm
   enableButton: ->
     @submitButton().prop('disabled', false)
 
-  requestStripeToken: =>
-    Stripe.card.createToken
+  requestBalancedToken: =>
+    balanced.card.create
       number: @creditCardNumber().val()
       cvc: @cvc().val()
-      exp_month: @expirationDate().payment('cardExpiryVal')['month'] || 0
-      exp_year: @expirationDate().payment('cardExpiryVal')['year'] || 0
+      expiration_month: @expirationDate().payment('cardExpiryVal')['month'] || 0
+      expiration_year: @expirationDate().payment('cardExpiryVal')['year'] || 0
       ,
-      @stripeCallback
+      @balancedCallback
 
-  stripeCallback: (status, response) =>
-    if response.error
-      @displayError(response.error)
-      @enableButton()
-    else
-      @setStripeToken(response.id)
-      @submit()
+  balancedCallback: (response) =>
+    @setCardURI(response.cards[0].href)
+    @submit()
 
-  setStripeToken: (value) ->
-    @stripeToken().val(value)
+  setCardURI: (value) ->
+    @cardURI().val(value)
 
   submit: ->
     @$form.get(0).submit()
@@ -66,7 +62,7 @@ class StripeForm
   onSubmit: (e) =>
     e.preventDefault()
     @disableButton()
-    @requestStripeToken()
+    @requestBalancedToken()
 
 $ ->
-  new StripeForm('#new_transaction_form')
+  new BalancedForm('#new_transaction_form')

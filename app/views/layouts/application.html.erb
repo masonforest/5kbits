@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>OverpricedBitcoin</title>
+  <title>FiveKBits</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <script type="text/javascript" src="https://js.balancedpayments.com/1.1/balanced.js"></script>
   <%= tag :meta, name: :btc_to_usd_cents_exchange_rate, value: ENV['BTC_TO_USD_CENTS_EXCHANGE_RATE'] %>
   <%= csrf_meta_tags %>
   <script type="text/javascript">
@@ -19,7 +20,7 @@
       <div class="col-xs-12">
         <%= link_to root_path do %>
           <%= image_tag 'logo.png', class: 'logo' %>
-          <h1>OverpricedBitcoin</h1>
+          <h1>5K Bits</h1>
         <% end %>
         <nav>
       </div>

@@ -1,16 +1,11 @@
 <table>
   <thead>
     <tr>
-      <th>USD (at the time of the transaction)</th>
-      <th>BTC</th>
       <th>Bitcoin Address</th>
-      <th>Date and Time of Transaction</th>
     </tr>
   </thead>
 <% @transactions.each do |transaction| %>
   <tr>
-    <td><%= number_to_currency(transaction.usd) %></td>
-    <td><%= transaction.btc %></td>
     <td><%= link_to transaction.bitcoin_address, "http://blockexplorer.com/address/#{transaction.bitcoin_address}", target: '_blank' %></td>
     <td><%= time_ago_in_words transaction.created_at %> ago</td>
   </tr>

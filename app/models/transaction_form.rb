@@ -15,8 +15,7 @@ class TransactionForm
   attr_accessor(
     :bitcoin_address,
     :message,
-    :stripe_token,
-    :stripe_customer_id,
+    :card_uri,
     :usd_cents
   )
 
@@ -24,26 +23,6 @@ class TransactionForm
     message: 'invalid bitcoin address' }
 
   monetize :usd_cents
-
-  validate :total_purchased_with_card_is_valid
-
-  validates(
-    :usd,
-    numericality: {
-      greater_than_or_equal_to: 1,
-      message: "must be greater than or equal to $1"
-    }
-  )
-
-  validates(
-    :usd,
-    numericality: {
-      less_than_or_equal_to: :max_purchase,
-      message: lambda {|translation, error| "must be less than or equal to $#{sprintf("%.2f", error[:count])}"}
-    }
-  )
-
-  before_validation :create_stripe_customer
 
   def submit
     if valid?
@@ -65,12 +44,14 @@ class TransactionForm
   end
 
   def charge_card
-    @stripe_charge = Stripe::Charge.create(
-      amount: usd_cents,
-      currency: 'usd',
-      customer: @stripe_customer,
-      description: message
+    @card = Balanced::Card.fetch(card_uri)
+    a = @card.debit(
+      amount: 500,
+      appears_on_statement_as: '5kbits.com',
+      description: '5000 bits'
     )
+
+    binding.pry
   end
 
   def create_transaction
@@ -78,7 +59,7 @@ class TransactionForm
       bitcoin_address: bitcoin_address,
       bitcoin_transaction_id: @bitcoin_transaction_id,
       btc: btc,
-      card_fingerprint:  @stripe_charge.card.fingerprint,
+      card_fingerprint:  'balanced',
       usd_cents: usd_cents,
       message: message
     )
@@ -89,39 +70,6 @@ class TransactionForm
   end
 
   private
-
-  def total_purchased_with_card_is_valid
-    if total_purchased_with_card >= max_cents
-      errors.add(:usd, "you have already spent #{number_to_currency(max_cents / 100.0)} with this card")
-    end
-  end
-
-  def total_purchased_with_card
-    Transaction.where(card_fingerprint: card_fingerprint).sum(:usd_cents) / 100.0
-  end
-
-  def create_stripe_customer
-    if stripe_customer_id
-      @stripe_customer = Stripe::Customer.retrive(stripe_customer_id)
-    else
-      @stripe_customer = Stripe::Customer.create(card: stripe_token)
-      stripe_customer_id = @stripe_customer_id
-    end
-  end
-
-  def card_fingerprint
-    card.fingerprint
-  end
-
-  def card
-    @stripe_customer.cards.first
-  end
-
-  def amount_is_valid
-    if usd_cents > max_cents
-      errors.add(:usd, "amount must be less than #{number_to_currency(max_cents / 100.0)}")
-    end
-  end
 
   def max_cents
     ENV['MAXIUM_AMOUNT_IN_CENTS'].to_i
@@ -139,8 +87,6 @@ class TransactionForm
   end
 
   def btc
-    (usd_cents / ENV['BTC_TO_USD_CENTS_EXCHANGE_RATE'].to_f)
-      .round(8)
+    0.005
   end
-
 end
