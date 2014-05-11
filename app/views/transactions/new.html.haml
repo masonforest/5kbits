@@ -2,40 +2,18 @@
   %h1 Sorry, there are no bitcoins left to sell at this exchange.
   %h1 Please check back soon.
 - else
-  .panel.panel-danger
-    .panel-heading FiveKBits does not condone illegal activities.
-    .panel-body
-      Transactions are limited to $20 per credit card to
-      prevent fraud and other illegal activities.
-      FiveKBits will abide by all Federal and State laws as they are created.
-  %p Exchange rate at this exchange: 1 BTC = #{exchange_rate}
-  %p Amount left to be distrubuted at this exchange: #{btc_remaining} BTC = #{usd_remaining}
+  .jumbotron
+    %h1 Buy 5000 Bits for $5
   = simple_form_for @transaction_form, url: transactions_path do |f|
     = f.input :card_uri, as: :hidden
     .row
       .col-xs-7
-        .row.amount
-          .col-xs-5
-            = f.input :usd do
-              .input-group.usd.active
-                %span.input-group-addon $
-                = f.input_field :usd, placeholder: sprintf('%.2f',ENV['BTC_TO_USD_CENTS_EXCHANGE_RATE'].to_i / 100.00/ 100.0)
-                %span.input-group-addon
-                  %span.glyphicon.glyphicon-pencil
-                  USD
-          .col-xs-1
-            .glyphicon.glyphicon-arrow-right
-          .col-xs-6
-            .input-group.btc
-              = f.input_field :btc,  value: (".001" if Rails.env.development?), disabled: true , name: nil
-              %span.input-group-addon
-                %span.glyphicon.glyphicon-pencil
-                BTC
+        .row
+          .col-xs-12
+            %h1 Purchase form
         .row
           .col-xs-12
             = f.input :bitcoin_address, input_html: { value: ("1LoBLNKPEdy4GwYWdaDLaTRbB7BBC9dZP3" if Rails.env.development?) }
-          .col-xs-12
-            = f.input :message
       .col-xs-5
         = f.input :credit_card_number, input_html: { value: ('4111 1111 1111 1111' if Rails.env.development?), name: nil }
         .row
