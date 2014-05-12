@@ -2,7 +2,7 @@ en:
   helpers:
     submit:
       transaction_form:
-        create: Purchase bitcoin
+        create: Buy 5000 Bits for $5
   simple_form:
     labels:
       transaction_form:

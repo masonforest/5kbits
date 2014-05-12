@@ -36,16 +36,16 @@
   background-image: none;
 }
 
-.btn-default {
-  text-shadow: 0 1px 0 #fff;
-  background-image: -webkit-linear-gradient(top, #ffffff 0%, #e0e0e0 100%);
-  background-image: linear-gradient(to bottom, #ffffff 0%, #e0e0e0 100%);
-  background-repeat: repeat-x;
-  border-color: #dbdbdb;
-  border-color: #ccc;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe0e0e0', GradientType=0);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-}
+/* .btn-default { */
+/*   text-shadow: 0 1px 0 #fff; */
+/*   background-image: -webkit-linear-gradient(top, #ffffff 0%, #e0e0e0 100%); */
+/*   background-image: linear-gradient(to bottom, #ffffff 0%, #e0e0e0 100%); */
+/*   background-repeat: repeat-x; */
+/*   border-color: #dbdbdb; */
+/*   border-color: #ccc; */
+/*   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe0e0e0', GradientType=0); */
+/*   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); */
+/* } */
 
 .btn-default:hover,
 .btn-default:focus {
@@ -59,15 +59,15 @@
   border-color: #dbdbdb;
 }
 
-.btn-primary {
-  background-image: -webkit-linear-gradient(top, #428bca 0%, #2d6ca2 100%);
-  background-image: linear-gradient(to bottom, #428bca 0%, #2d6ca2 100%);
-  background-repeat: repeat-x;
-  border-color: #2b669a;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff428bca', endColorstr='#ff2d6ca2', GradientType=0);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-}
-
+/* .btn-primary { */
+/*   background-image: -webkit-linear-gradient(top, #428bca 0%, #2d6ca2 100%); */
+/*   background-image: linear-gradient(to bottom, #428bca 0%, #2d6ca2 100%); */
+/*   background-repeat: repeat-x; */
+/*   border-color: #2b669a; */
+/*   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff428bca', endColorstr='#ff2d6ca2', GradientType=0); */
+/*   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); */
+/* } */
+/*  */
 .btn-primary:hover,
 .btn-primary:focus {
   background-color: #2d6ca2;

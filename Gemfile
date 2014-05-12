@@ -4,6 +4,7 @@ gem 'rails', '4.0.2'
 
 gem 'balanced'
 gem 'bitcoin-client'
+gem 'bourbon'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'dalli'
 gem 'dotenv-rails'

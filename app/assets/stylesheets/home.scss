@@ -1,7 +1,48 @@
+@-webkit-keyframes fade {
+  from {
+  opacity: 0 }
+    to {
+    opacity: 1 }
+}
+
+.splash {
+  text-align: center;
+  padding: 100px;
+  .five-dollors {
+    opacity: 0;
+    @include animation(fade 2.0s ease-in);
+    -webkit-animation-fill-mode: forwards;
+  }
+
+  .glyphicon-arrow-right {
+    opacity: 0;
+    font-size: 30px;
+    @include animation(fade 2.0s ease-in .5s);
+    -webkit-animation-fill-mode: forwards;
+  }
+
+  .five-bits{
+    opacity: 0;
+    @include animation(fade 2.0s ease-in 1s);
+    -webkit-animation-fill-mode: forwards;
+  }
+
+
+  .tagline {
+    opacity: 0;
+    @include animation(fade 2.0s ease-in 1.5s);
+    -webkit-animation-fill-mode: forwards;
+  }
+}
+
+input.btn.btn-primary{
+  font-size: 34px;
+}
 .logo {
-  width: 200px;
-  float: left;
-  margin-top: 30px;
+  color: black;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 header {
@@ -19,10 +60,9 @@ header {
   }
 }
 
-.jumbotron {
-  h1{
-    text-align: center;
-  }
+footer{
+  border-top: 1px solid #aaa;
+  margin-top: 100px;
 }
 input[type=submit] {
   font-size: 40px;
