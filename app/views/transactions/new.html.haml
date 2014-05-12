@@ -3,19 +3,18 @@
   %h1 Please check back soon.
 - else
   -# .jumbotron
-  .splash.centered
-    %h1
-      %span.five-dollors $5
-      %span.glyphicon.glyphicon-arrow-right
-      %span.five-bits ƀ5000
-    %h1.tagline Own bitcoins today.
+  .row
+    .col-xs-12.col-xs-offset-0.col-md-6.col-md-offset-4
+      .splash.centered
+        %h1
+          %span.five-dollors $5
+          %span.glyphicon.glyphicon-arrow-right
+          %span.five-bits ƀ5000
+        %h1.tagline Own bitcoin today.
   = simple_form_for @transaction_form, url: transactions_path do |f|
     = f.input :card_uri, as: :hidden
     .row
-      .col-xs-6.col-xs-offset-3
-        -# .row
-        -#   .col-xs-12
-        -#     %h1 Buy 5000 bits for $5
+      .col-xs-12.col-xs-offset-0.col-md-6.col-md-offset-4
         .row
           .col-xs-12
             = f.input :bitcoin_address, input_html: { value: ("1LoBLNKPEdy4GwYWdaDLaTRbB7BBC9dZP3" if Rails.env.development?) }
@@ -27,5 +26,5 @@
             = f.input :cvc, input_html: { value: ('123' if Rails.env.development?), name: nil }
         .row
           .col-xs-12
-            = f.submit class: 'btn btn-primary pull-right'
+            = f.submit class: 'btn btn-primary'
 

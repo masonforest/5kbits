@@ -1,3 +1,5 @@
+@import "bourbon";
+
 @-webkit-keyframes fade {
   from {
   opacity: 0 }
@@ -7,7 +9,9 @@
 
 .splash {
   text-align: center;
-  padding: 100px;
+
+  margin-bottom: 60px;
+
   .five-dollors {
     opacity: 0;
     @include animation(fade 2.0s ease-in);
@@ -36,7 +40,9 @@
 }
 
 input.btn.btn-primary{
-  font-size: 34px;
+  font-size: 2em;
+  width: 100%;
+  padding: 0;
 }
 .logo {
   color: black;
